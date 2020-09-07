@@ -86,7 +86,16 @@ export class Renderer {
     }
 
     clear() {
-        const ctx = (this._owner._drawingCanvas || this._owner._container).getContext('2d')
+        let ctx = {}
+        // 
+        const canvas = this._owner._drawingCanvas || this._owner._container
+        if(window.enableWebGLCanvas){
+             ctx = window.enableWebGLCanvas(canvas)
+            if(ctx.start2D)ctx.start2D()
+        }else{
+             ctx = (this._owner._drawingCanvas || this._owner._container).getContext('2d')
+        }
+        //
         const areaFrame = {
             x: 0.0,
             y: 0.0,
@@ -94,6 +103,7 @@ export class Renderer {
             height: (this._owner._drawingCanvas || this._owner._container).height,
         }
         ctx.clearRect(areaFrame.x, areaFrame.y, areaFrame.width, areaFrame.height)
+        if(ctx.finish2D)ctx.finish2D()
     }
 
     clearAudios() {
@@ -105,7 +115,17 @@ export class Renderer {
 
     drawFrame(frame) {
         if (this._prepared) {
-            const ctx = (this._owner._drawingCanvas || this._owner._container).getContext('2d')
+            let ctx = {}
+            // 
+            const canvas = this._owner._drawingCanvas || this._owner._container
+            if(window.enableWebGLCanvas){
+                ctx = window.enableWebGLCanvas(canvas)
+                if(ctx.start2D)ctx.start2D()
+            }else{
+                ctx = (this._owner._drawingCanvas || this._owner._container).getContext('2d')
+            }
+            // console.log(ctx)
+            //
             const areaFrame = {
                 x: 0.0,
                 y: 0.0,
@@ -151,10 +171,12 @@ export class Renderer {
                     ctx.restore();
                 }
             });
+            if(ctx.finish2D)ctx.finish2D()
         }
         else {
             this._undrawFrame = frame;
         }
+        
     }
 
     drawSprite(sprite, ctx, frameIndex) {

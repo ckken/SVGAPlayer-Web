@@ -1,0 +1,56 @@
+<html>
+<style>
+    .animate{
+        float: left;
+    }
+</style>
+<body style="text-align: center">
+    <div id="box">
+        <canvas id="drawingCanvas" height="400" width="400"></canvas>
+    </div>
+    <!-- <script src="//s1.yy.com/ued_web_static/lib/jszip/3.1.4/??jszip.min.js,jszip-utils.min.js" charset="utf-8"></script> -->
+    <!-- <script src="./webgl/gl-matrix.js"></script>
+    <script src="./webgl/litegl.js"></script>
+    <script src="./webgl/Canvas2DtoWebGL.js"></script> -->
+    <script src="../build/svgaplus.js"></script>
+    <!-- <script src="../build/svga.min.js"></script> -->
+   <!--  <script>
+        var parser = new SVGA.Parser()
+        // var player = new SVGA.Player(document.getElementById('drawingCanvas'))
+        function startCanvasVideo(i,videoItem){
+            var canvas = document.createElement('canvas');
+            canvas.id     = "drawingCanvas_"+i;
+            canvas.className = ['animate']
+            canvas.width  = 100;
+            canvas.height = 100;
+            document.getElementById('box').appendChild(canvas)
+            var player = new SVGA.Player(canvas)
+            player.setVideoItem(videoItem);
+            player.startAnimation()
+
+        }
+        parser.load("./test1_400x400.svga", function (videoItem) {
+            // player.setVideoItem(videoItem);
+            // player.startAnimation()
+            for(var i=0;i <15;i++){
+                // console.log(i)
+                startCanvasVideo(i,videoItem)
+            }
+        })
+        // const requestFrame = () => {
+        //     requestAnimationFrame(() => {
+        //         const ctx = document.getElementById('drawingCanvas').getContext('2d');
+        //         ctx.clearRect(0, 0, 500, 1000);
+        //         ctx.fillStyle = "#e2e2e2"
+        //         ctx.fillRect(0, 0, 500, 1000);
+        //         player.drawOnContext(ctx, 100, 100, 250, 250);
+        //         requestFrame()
+        //     })
+        // }
+
+        // requestFrame();
+
+    </script> -->
+</body>
+
+</html>
